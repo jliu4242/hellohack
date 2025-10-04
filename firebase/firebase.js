@@ -2,17 +2,15 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-    apiKey: "API_KEY",
-    authDomain: "PROJECT_ID.firebaseapp.com",
-    // The value of `databaseURL` depends on the location of the database
-    databaseURL: "https://DATABASE_NAME.firebaseio.com",
+    apiKey: "AIzaSyDpD1649O298nH_55ubmOPCKUy0jAwcyuY",
+    authDomain: "jobtracker-e3561.firebaseapp.com",
     projectId: "jobtracker-e3561",
-    // The value of `storageBucket` depends on when you provisioned your default bucket (learn more)
-    storageBucket: "PROJECT_ID.firebasestorage.app",
-    messagingSenderId: "SENDER_ID",
-    appId: "APP_ID",
+    storageBucket: "jobtracker-e3561.firebasestorage.app",
+    messagingSenderId: "623352889065",
+    appId: "1:623352889065:web:6bccb0c9f810488f8dfa78",
+    measurementId: "G-JHM2JJDWP8"
 }
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+export const auth = getAuth(app);

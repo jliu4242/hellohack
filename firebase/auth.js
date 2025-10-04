@@ -1,23 +1,27 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
-const auth = getAuth();
 
-createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        const user = userCredential.user;
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-    });
-
-signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+export function onAuthStateChanged(cb) {
+    return _onAuthStateChanged(auth, cb);
+  }
+  
+  export function onIdTokenChanged(cb) {
+    return _onIdTokenChanged(auth, cb);
+  }
+  
+  export async function signInWithGoogle() {
+    const provider = new GoogleAuthProvider();
+  
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error("Error signing in with Google", error);
+    }
+  }
+  
+  export async function signOut() {
+    try {
+      return auth.signOut();
+    } catch (error) {
+      console.error("Error signing out with Google", error);
+    }
+  }
