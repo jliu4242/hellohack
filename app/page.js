@@ -13,6 +13,7 @@ export default function Home() {
           height={38}
           priority
         />
+        
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
             Get started by editing{" "}
@@ -25,7 +26,7 @@ export default function Home() {
             Save and see your changes instantly.
           </li>
           <li>
-            <Link href="./pages/upload"> testing </Link>
+            <Link href="./pages/signin"> testing </Link>
           </li>
         </ol>
 
