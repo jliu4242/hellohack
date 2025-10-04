@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "fastapi": "^0.0.8",
+    "firebase": "^10.0.0",
+    "firebaseui": "^6.1.0",
     "next": "15.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0"
