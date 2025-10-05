@@ -449,3 +449,43 @@
     font-size: 0.8rem;
   }
 }
+
+/* Selected file and process button styles */
+.selectedFile {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 2px dashed var(--primary);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.selectedFile p {
+  margin: 0 0 15px 0;
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+.processButton {
+  background: linear-gradient(135deg, var(--primary), #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.processButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.processButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}

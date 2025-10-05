@@ -1,0 +1,127 @@
+From john.doe@email.com Mon Jan 15 10:30:00 2024
+Return-Path: <john.doe@email.com>
+Received: from mail.google.com (mail.google.com [74.125.82.109])
+	by mail.example.com (Postfix) with ESMTPS id 1234567890
+	for <john.doe@email.com>; Mon, 15 Jan 2024 10:30:00 +0000 (UTC)
+Message-ID: <abc123@mail.google.com>
+Date: Mon, 15 Jan 2024 10:30:00 +0000
+From: John Doe <john.doe@email.com>
+To: hr@techcorp.com
+Subject: Application for Software Engineer Position
+
+Dear Hiring Manager,
+
+I am writing to express my interest in the Software Engineer position at TechCorp. 
+I have attached my resume and cover letter for your review.
+
+Best regards,
+John Doe
+
+From noreply@techcorp.com Tue Jan 16 14:20:00 2024
+Return-Path: <noreply@techcorp.com>
+Received: from mail.techcorp.com (mail.techcorp.com [192.168.1.100])
+	by mail.example.com (Postfix) with ESMTPS id 1234567891
+	for <john.doe@email.com>; Tue, 16 Jan 2024 14:20:00 +0000 (UTC)
+Message-ID: <def456@mail.techcorp.com>
+Date: Tue, 16 Jan 2024 14:20:00 +0000
+From: HR Team <noreply@techcorp.com>
+To: john.doe@email.com
+Subject: Interview Invitation - Software Engineer Position
+
+Dear John,
+
+Thank you for your interest in the Software Engineer position at TechCorp. 
+We would like to invite you for an interview on January 25th, 2024 at 2:00 PM.
+
+Please confirm your availability.
+
+Best regards,
+HR Team
+TechCorp
+
+From john.doe@email.com Wed Jan 17 09:15:00 2024
+Return-Path: <john.doe@email.com>
+Received: from mail.google.com (mail.google.com [74.125.82.109])
+	by mail.example.com (Postfix) with ESMTPS id 1234567892
+	for <john.doe@email.com>; Wed, 17 Jan 2024 09:15:00 +0000 (UTC)
+Message-ID: <ghi789@mail.google.com>
+Date: Wed, 17 Jan 2024 09:15:00 +0000
+From: John Doe <john.doe@email.com>
+To: hr@startupco.com
+Subject: Application for Frontend Developer Role
+
+Dear Hiring Team,
+
+I am excited to apply for the Frontend Developer position at StartupCo. 
+I have 3 years of experience with React and TypeScript.
+
+Looking forward to hearing from you.
+
+Best regards,
+John Doe
+
+From noreply@startupco.com Thu Jan 18 16:45:00 2024
+Return-Path: <noreply@startupco.com>
+Received: from mail.startupco.com (mail.startupco.com [10.0.0.50])
+	by mail.example.com (Postfix) with ESMTPS id 1234567893
+	for <john.doe@email.com>; Thu, 18 Jan 2024 16:45:00 +0000 (UTC)
+Message-ID: <jkl012@mail.startupco.com>
+Date: Thu, 18 Jan 2024 16:45:00 +0000
+From: HR <noreply@startupco.com>
+To: john.doe@email.com
+Subject: Rejection - Frontend Developer Position
+
+Dear John,
+
+Thank you for your interest in the Frontend Developer position at StartupCo. 
+After careful consideration, we have decided to move forward with other candidates.
+
+We wish you the best in your job search.
+
+Best regards,
+HR Team
+StartupCo
+
+From john.doe@email.com Fri Jan 19 11:30:00 2024
+Return-Path: <john.doe@email.com>
+Received: from mail.google.com (mail.google.com [74.125.82.109])
+	by mail.example.com (Postfix) with ESMTPS id 1234567894
+	for <john.doe@email.com>; Fri, 19 Jan 2024 11:30:00 +0000 (UTC)
+Message-ID: <mno345@mail.google.com>
+Date: Fri, 19 Jan 2024 11:30:00 +0000
+From: John Doe <john.doe@email.com>
+To: careers@bigtech.com
+Subject: Application for Senior Software Engineer
+
+Dear Recruiting Team,
+
+I am writing to apply for the Senior Software Engineer position at BigTech. 
+I have 5 years of experience in full-stack development.
+
+Please find my application materials attached.
+
+Best regards,
+John Doe
+
+From hr@bigtech.com Mon Jan 22 09:00:00 2024
+Return-Path: <hr@bigtech.com>
+Received: from mail.bigtech.com (mail.bigtech.com [203.0.113.10])
+	by mail.example.com (Postfix) with ESMTPS id 1234567895
+	for <john.doe@email.com>; Mon, 22 Jan 2024 09:00:00 +0000 (UTC)
+Message-ID: <pqr678@mail.bigtech.com>
+Date: Mon, 22 Jan 2024 09:00:00 +0000
+From: HR Department <hr@bigtech.com>
+To: john.doe@email.com
+Subject: Job Offer - Senior Software Engineer Position
+
+Dear John,
+
+Congratulations! We are pleased to offer you the Senior Software Engineer position at BigTech.
+
+Your start date will be February 15th, 2024.
+
+Please let us know if you accept this offer.
+
+Best regards,
+HR Department
+BigTech

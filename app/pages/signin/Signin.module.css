@@ -1,6 +1,6 @@
 .container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +36,7 @@
 .title {
   font-size: 28px;
   font-weight: 700;
-  color: var(--foreground);
+  color: #ffffff;
   margin-bottom: 8px;
 }
 
@@ -176,7 +176,7 @@
   }
   
   .input {
-    background: #2d2d2d;
+    background: #cfcaca;
     border-color: #444;
     color: white;
   }

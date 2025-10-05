@@ -6,83 +6,96 @@ import styles from './Upload.module.css';
 
 export default function UploadPage() {
   const [isDragOver, setIsDragOver] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState(null);
   const [uploadedData, setUploadedData] = useState(null);
   const [error, setError] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isProcessing, setIsProcessing] = useState(false);
   const router = useRouter();
 
-  const validateEmailData = (data) => {
-    if (!Array.isArray(data)) {
-      throw new Error('JSON must contain an array of email objects');
+  const processMboxFile = useCallback(async () => {
+    if (!selectedFile) {
+      setError('No file selected');
+      return;
     }
 
-    const requiredFields = ['id', 'company', 'position', 'dateApplied', 'startDate', 'status'];
-    
-    for (let i = 0; i < data.length; i++) {
-      const item = data[i];
-      for (const field of requiredFields) {
-        if (!item[field]) {
-          throw new Error(`Item ${i + 1} is missing required field: ${field}`);
-        }
-      }
-    }
-
-    return data;
-  };
-
-  const processUploadedData = useCallback(async (fileContent) => {
     try {
       setError(null);
-      setIsUploading(true);
-      setUploadStatus('Parsing JSON...');
+      setIsProcessing(true);
+      setUploadStatus('Sending .mbox file to backend for processing...');
 
-      const jsonData = JSON.parse(fileContent);
-      const validatedData = validateEmailData(jsonData);
+      // Create FormData to send file to backend
+      const formData = new FormData();
+      formData.append('file', selectedFile);
 
-      setUploadStatus('Processing applications...');
+      // Call backend API
+      const response = await fetch('http://localhost:8003/extract', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Backend error: ${response.statusText}`);
+      }
+    
+
+      const result = await response.json();
       
-      // Simulate processing time
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (!result.success) {
+        throw new Error(result.message || 'Failed to process .mbox file');
+      }
 
-      // Transform data to match our application format
-      const processedData = validatedData.map((item, index) => ({
-        id: item.id || Date.now() + index,
-        company: item.company,
-        position: item.position,
-        dateApplied: item.dateApplied || new Date().toISOString().split('T')[0],
-        startDate: item.startDate || null,
-        status: item.status || 'Applied'
-      }));
+      setUploadStatus('Processing results...');
+      
+      // Use ChatGPT extracted data
+      let processedData = [];
+      
+      if (result.data && result.data.length > 0) {
+        processedData = result.data.map((item, index) => ({
+          id: item.id || Date.now() + index,
+          company: item.company || 'Unknown Company',
+          position: item.position || 'Unknown Position',
+          dateApplied: item.dateApplied || new Date().toISOString().split('T')[0],
+          startDate: item.startDate || null,
+          status: item.status || 'Applied'
+        }));
+        
+        setUploadStatus(`Successfully extracted ${processedData.length} job applications from .mbox file!`);
+      } else {
+        setUploadStatus('No job applications found in the .mbox file');
+      }
 
       setUploadedData(processedData);
-      setUploadStatus('Upload successful!');
       
       // Store in localStorage for the spreadsheet page
       localStorage.setItem('uploadedApplications', JSON.stringify(processedData));
       
+      // Store ChatGPT response for potential analysis
+      if (result.raw_response) {
+        localStorage.setItem('chatgptResponse', result.raw_response);
+      }
+      
     } catch (err) {
       setError(err.message);
-      setUploadStatus('Upload failed');
+      setUploadStatus('Processing failed');
     } finally {
-      setIsUploading(false);
+      setIsProcessing(false);
     }
-}, []);
+}, [selectedFile]);
 
   const handleFileSelect = useCallback(async (file) => {
     if (!file) return;
 
-    if (file.type !== 'application/json' && !file.name.endsWith('.json')) {
-      setError('Please select a JSON file');
+    // Only allow .mbox files
+    if (!file.name.endsWith('.mbox')) {
+      setError('Please select a .mbox file');
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      processUploadedData(e.target.result);
-    };
-    reader.readAsText(file);
-  }, [processUploadedData]);
+    setSelectedFile(file);
+    setError(null);
+    setUploadStatus(`Selected file: ${file.name}`);
+  }, []);
 
   const handleDragOver = useCallback((e) => {
     e.preventDefault();
@@ -117,12 +130,14 @@ export default function UploadPage() {
     setUploadedData(null);
     setUploadStatus(null);
     setError(null);
+    setSelectedFile(null);
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.title}>Upload Email Data</h1>
+        <p className={styles.subtitle}>Upload your .mbox file to extract job applications</p>
       </div>
 
       <div className={styles.content}>
@@ -135,11 +150,11 @@ export default function UploadPage() {
           >
             <div className={styles.dropZoneContent}>
               <div className={styles.uploadIcon}>
-                {isDragOver ? '📁' : '📤'}
+                {isDragOver ? '📁' : '📧'}
               </div>
               
               <h3 className={styles.dropZoneTitle}>
-                {isDragOver ? 'Drop your JSON file here' : 'Drag & drop your JSON file'}
+                {isDragOver ? 'Drop your .mbox file here' : 'Drag & drop your .mbox file'}
               </h3>
               
               <p className={styles.dropZoneSubtitle}>
@@ -148,18 +163,31 @@ export default function UploadPage() {
 
               <input
                 type="file"
-                accept=".json,application/json"
+                accept=".mbox"
                 onChange={handleFileInputChange}
                 className={styles.fileInput}
                 id="fileInput"
-                disabled={isUploading}
+                disabled={isProcessing}
               />
               
               <label htmlFor="fileInput" className={styles.browseButton}>
-                {isUploading ? 'Processing...' : 'Browse Files'}
+                Browse .mbox Files
               </label>
 
-              {isUploading && (
+              {selectedFile && (
+                <div className={styles.selectedFile}>
+                  <p>Selected: {selectedFile.name}</p>
+                  <button 
+                    className={styles.processButton}
+                    onClick={processMboxFile}
+                    disabled={isProcessing}
+                  >
+                    {isProcessing ? 'Processing...' : 'Process with AI'}
+                  </button>
+                </div>
+              )}
+
+              {isProcessing && (
                 <div className={styles.progressBar}>
                   <div className={styles.progressFill}></div>
                 </div>
@@ -181,9 +209,9 @@ export default function UploadPage() {
         ) : (
           <div className={styles.successContainer}>
             <div className={styles.successIcon}>✅</div>
-            <h3 className={styles.successTitle}>Upload Successful!</h3>
+            <h3 className={styles.successTitle}>Processing Complete!</h3>
             <p className={styles.successMessage}>
-              Successfully processed {uploadedData.length} job applications from your JSON file.
+              Successfully processed {uploadedData.length} job applications from your .mbox file.
             </p>
             
             <div className={styles.successActions}>
@@ -202,8 +230,6 @@ export default function UploadPage() {
             </div>
           </div>
         )}
-
-        
       </div>
     </div>
   );
