@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import openai
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Dict, Any
+import tempfile
 
 load_dotenv()
 
@@ -29,8 +30,13 @@ async def root():
 async def extract(file: UploadFile = File(...)):
 
     contents = await file.read()
-    # get mbox.
     
+    with tempfile.NamedTemporaryFile(delete=False) as tmp:
+        tmp.write(contents)
+        tmp_path = tmp.name
+    
+    mbox = mailbox.mbox(tmp_path)
+
     json_list = []
 
     for msg in mbox:
@@ -58,13 +64,14 @@ update the status of that object and don't make a new object."""
 "status": "applied, interview offered, interview scheduled, rejected, offered",
 "date_status_last_updated": "YYYY-MM-DD or 'N/A'"""
             
-        response = await client.chat.completions.create(
+        response = await openai.ChatCompletion.acreate(
             model = "gpt-3.5-turbo",
             messages=[  {"role": "system", "content": system_prompt},
                         {"role": "user", "content": prompt}],
             temperature = 0
         )
         
-        json_list = response.choices[0].message.content
+        json_obj = json.loads(response.choices[0].message.content)
+        json_list.append(json_obj)
 
     return json_list
