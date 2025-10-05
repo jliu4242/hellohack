@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "company": "Google",
+    "position": "Software Engineer",
+    "dateApplied": "2024-01-15",
+    "startDate": "2024-02-01",
+    "status": "Interview Scheduled" 
+  },
+  {
+    "id": 2,
+    "company": "Microsoft",
+    "position": "Product Manager",
+    "dateApplied": "2024-01-18",
+    "startDate": "2024-02-01",
+    "status": "Applied"
+  },
+  {
+    "id": 3,
+    "company": "Meta",
+    "position": "Data Scientist",
+    "dateApplied": "2024-01-20",
+    "startDate": "2024-02-01",
+    "status": "Rejected"
+  },
+  {
+    "id": 4,
+    "company": "Apple",
+    "position": "iOS Developer",
+    "dateApplied": "2024-01-22",
+    "startDate": "2024-02-01",
+    "status": "Offer Extended"
+  },
+  {
+    "id": 5,
+    "company": "Amazon",
+    "position": "Cloud Engineer",
+    "dateApplied": "2024-01-25",
+    "startDate": "2024-02-01",
+    "status": "Applied"
+  },
+  {
+    "id": 6,
+    "company": "Netflix",
+    "position": "Frontend Developer",
+    "dateApplied": "2024-01-28",
+    "startDate": "2024-02-01",
+    "status": "Interview Scheduled"
+  }
+]

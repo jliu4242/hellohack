@@ -1,0 +1,143 @@
+.pieChartContainer {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 30px auto;
+  max-width: 1200px;
+  margin-top: 150px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.pieChartTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.pieChartWrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pieChartInner {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.pieChart {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 3px solid white;
+}
+
+.pieChartHole {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.centerContent {
+  text-align: center;
+  color: var(--foreground);
+}
+
+.totalNumber {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.totalLabel {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.noDataMessage {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  padding: 40px;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 200px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.legendColor {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.legendLabel {
+  font-weight: 500;
+  color: var(--foreground);
+  flex: 1;
+}
+
+.legendValue {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pieChartWrapper {
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .pieChart {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .legend {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .pieChartContainer {
+    padding: 16px;
+    margin: 20px auto;
+  }
+  
+  .pieChart {
+    width: 200px;
+    height: 200px;
+  }
+}

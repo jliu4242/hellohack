@@ -1,108 +1,100 @@
-import Image from "next/image";
+'use client';
+
 import Link from "next/link";
+import styles from "./Home.module.css";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-          <li>
-            <Link href="./pages/signin"> testing </Link>
-          </li>
-        </ol>
+  const scrollToInstructions = () => {
+    document.getElementById('instructions').scrollIntoView({ 
+      behavior: 'smooth' 
+    });
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <div className={styles.container}>
+      {/* Hero Section - Centered */}
+      <div className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>
+            Stay on top of your job applications.
+          </h1>
+          <p className={styles.heroSubtitle}>
+            Job Tracker is a web app that will help you conveniently monitor your applications and keep your search for jobs organized.
+          </p>
+          
+          <button 
+            onClick={scrollToInstructions}
+            className={styles.getStartedButton}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Get Started
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* Features Section */}
+      <div className={styles.features}>
+        <div className={styles.featureGrid}>
+            
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>📊</div>
+            <h3>Spreadsheet View</h3>
+            <p>Organize applications in a clean, filterable table</p>
+          </div>
+
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>📈</div>
+            <h3>Track Progress</h3>
+            <p>Monitor application status and success rates</p>
+          </div>
+
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>🔍</div>
+            <h3>Filter & Search</h3>
+            <p>Find specific applications quickly with filters</p>
+          </div>
+          
+        </div>
+      </div>
+      
+      {/* Instructions Section */}
+      <div id="instructions" className={styles.instructions}>
+        <h2 className={styles.instructionsTitle}>How It Works</h2>
+        <div className={styles.instructionsList}>
+          <div className={styles.instructionItem}>
+            <div className={styles.instructionNumber}>1</div>
+            <div className={styles.instructionContent}>
+              <h3>Upload Data</h3>
+              <p>Upload JSON files containing job application data extracted from your emails</p>
+            </div>
+          </div>
+          <div className={styles.instructionItem}>
+            <div className={styles.instructionNumber}>2</div>
+            <div className={styles.instructionContent}>
+              <h3>View & Organize</h3>
+              <p>See all your applications in a clean spreadsheet format with filtering options</p>
+            </div>
+          </div>
+          <div className={styles.instructionItem}>
+            <div className={styles.instructionNumber}>3</div>
+            <div className={styles.instructionContent}>
+              <h3>Track Progress</h3>
+              <p>Monitor application status, interview schedules, and success rates</p>
+            </div>
+          </div>
+        </div>
+        
+        <div className={styles.ctaSection}>
+          <h3>Ready to get started?</h3>
+          <div className={styles.ctaButtons}>
+            <Link href="/pages/upload" className={styles.primaryButton}>
+              Upload Email Data
+            </Link>
+            <Link href="/pages/spreadsheets" className={styles.secondaryButton}>
+              View Spreadsheet
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
