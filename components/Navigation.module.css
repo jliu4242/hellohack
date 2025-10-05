@@ -1,0 +1,150 @@
+.navigation {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 2px solid var(--primary);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.container {
+  max-width: 12000px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  padding-left: 20px;
+  font-size: 32px;
+  color: var(--foreground);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.logo:hover {
+  transform: translateY(-1px);
+}
+
+.logoText {
+  background: linear-gradient(135deg, var(--primary), #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navItems {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary), #3b82f6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+}
+
+.navLink:hover::before {
+  opacity: 0.1;
+}
+
+.navLink:hover {
+  color: var(--foreground);
+  transform: translateY(-1px);
+}
+
+.navLink.active {
+  background: linear-gradient(135deg, var(--primary), #3b82f6);
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.navLink.active::before {
+  opacity: 0;
+}
+
+.navLink.active:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+}
+
+.navLabel {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+    height: 56px;
+  }
+  
+  .logo {
+    font-size: 1.1rem;
+  }
+  
+  .navItems {
+    gap: 4px;
+  }
+  
+  .navLink {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .navLabel {
+    display: none;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .navLink {
+    padding: 8px;
+    min-width: 40px;
+    justify-content: center;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .navigation {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+  }
+}
