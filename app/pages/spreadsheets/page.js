@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Table from '../../../components/Table';
-import { StatCard } from '../../../components/Card';
-import PieChart from '../../../components/PieChart';
+import Table from '../../components/Table';
+import { StatCard } from '../../components/Card';
+import PieChart from '../../components/PieChart';
 import styles from './Summary.module.css';
 
 // Sample data - in production, this would come from an API or background script

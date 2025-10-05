@@ -4,7 +4,7 @@ import "../../styles/auth.css"
 import dynamic from 'next/dynamic';
 
 // disable SSR for FirebaseUI (browser only)
-const FirebaseAuthUI = dynamic(() => import('../../component/firebaseAuthUI.js'), { ssr: false });
+const FirebaseAuthUI = dynamic(() => import('../../components/firebaseAuthUI.js'), { ssr: false });
 
 export default function signin() {
     const [email, setEmail] = useState("");

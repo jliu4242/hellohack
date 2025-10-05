@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navigation from "../components/Navigation";
+import Navigation from "./components/Navigation";
 import 'firebaseui/dist/firebaseui.css';
 
 const geistSans = Geist({
@@ -22,11 +22,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>              
         <Navigation />
-        {children}
-      </body>
+        </body>
     </html>
-  );
+  )
 }
