@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import 'firebaseui/dist/firebaseui.css';
 
 :root {
   --background: #ffffff;

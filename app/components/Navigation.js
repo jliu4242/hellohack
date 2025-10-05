@@ -9,11 +9,15 @@ export default function Navigation() {
 
   const navItems = [
     {
-      href: '../pages/spreadsheets',
+      href: '/pages/signin',
+      label: 'Sign In'
+    },
+    {
+      href: '/pages/spreadsheets',
       label: 'Spreadsheet'
     },
     {
-      href: '../pages/upload',
+      href: '/pages/upload',
       label: 'Upload'
     }
   ];
